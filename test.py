@@ -22,6 +22,7 @@ def get_header():
             if header_flag == 1:
                 print(line)
                 header_table.append(line)
+    # automatically close when end up block line
 
     #print(header_table)
     
