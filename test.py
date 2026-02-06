@@ -1,15 +1,19 @@
-#import pandas as pd
+import pandas as pd
 #import matplotlib as plt
 
-filename = 'SensorConnectData.csv'
+file_path = 'SensorConnectData.csv'
 #csv_file = "SensorConnectData.csv"
 
 def get_header():
     header_flag = 0
     header_table = []
-    header = []
-    with open(filename, 'r') as file:
+    header = ["timestamp"]
+    raw_header_number = 0
+    with open(file_path, 'r') as file:
+        it = -4
         for line in file:
+            it += 1
+
             #print(line.strip())
             line = line.strip()
             if line == "Channel,Type,SampleRate,Equation,Coefficients,Unit,UnitSymbol,WhereApplied,WhenApplied":
@@ -22,6 +26,10 @@ def get_header():
             if header_flag == 1:
                 print(line)
                 header_table.append(line)
+
+            if  line == "DATA_START":
+                raw_header_number = it
+            
     # automatically close when end up block line
 
     #print(header_table)
@@ -36,8 +44,25 @@ def get_header():
         else:
             valid = raw[2].split(",")
             print(raw[1],":",valid[1])
-            header.append(valid[1])
-    print(header)
-    
-get_header()
-#df = pd.read_csv(csv_file, sep=',', header=1)
+            valid_concat = raw[1],":",valid[1]
+            separator = ""
+            valid_concat = separator.join(valid_concat)
+            # valid_concat = valid_concat.replace(" ","")
+            header.append(valid_concat)
+    # print(header)
+    return header, raw_header_number
+
+#print(get_header())
+
+def csv_cleaner():
+    header_list, raw_header_number = get_header()
+    df = pd.read_csv(file_path, sep=',', header=raw_header_number, names=header_list)
+    print(df)
+
+# with open(file_path, mode='r', newline='', encoding='utf-8') as csvfile:
+#     # Create a reader object
+#         print(csvfile)
+#     # csv_reader = pd.read_csv(csvfile, delimiter=',')
+#     # print(csv_reader)
+
+csv_cleaner()
