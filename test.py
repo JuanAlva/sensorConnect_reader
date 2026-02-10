@@ -1,7 +1,8 @@
 import pandas as pd
 #import matplotlib as plt
+import csv
 
-file_path = 'SensorConnectData.csv'
+file_path = 'SensorConnectData3.csv'
 #csv_file = "SensorConnectData.csv"
 
 def get_header():
@@ -58,6 +59,28 @@ def csv_cleaner():
     header_list, raw_header_number = get_header()
     df = pd.read_csv(file_path, sep=',', header=raw_header_number, names=header_list)
     print(df)
+
+    output_file = "output.csv"
+
+    # 3. Open the file in write mode ('w') and use the csv.writer
+    try:
+        # 'newline=""' is important when writing with the csv module
+        with open(output_file, mode='w', newline='') as file:
+            writer = csv.writer(file)
+
+            # 4. Write the data to the file
+            # To write all data at once:
+            writer.writerows(df)
+            
+            # Alternatively, you can write row by row:
+            # writer.writerow(data_to_write[0])
+            # writer.writerow(data_to_write[1])
+            # ...
+
+        print(f"Successfully created and saved data to {file_path}")
+    
+    except:
+        print("create csv file failed")
 
 # with open(file_path, mode='r', newline='', encoding='utf-8') as csvfile:
 #     # Create a reader object
