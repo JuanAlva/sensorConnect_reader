@@ -2,7 +2,7 @@ import pandas as pd
 
 def match_quat_accel():
     # --- cargar cuaterniones ---
-    df_q = pd.read_csv("cuaterniones2.csv")
+    df_q = pd.read_csv("quat3.csv")
 
     df_q = df_q.rename(columns={
         "inertial-6286.188861:estOrientQuaternion[0-0]": "q0",
@@ -29,7 +29,7 @@ def match_quat_accel():
     df_q["time_comp"]
 
     # cargar aceleraciones
-    df_a = pd.read_csv("accel2.csv")
+    df_a = pd.read_csv("accel3.csv")
 
     # renombrar columnas
     df_a = df_a.rename(columns={
@@ -71,13 +71,17 @@ def match_quat_accel():
     df_u["dt"] = df_u["time"].diff() * 1e-9
     # df_u
 
-    new_order = ['time', 'q0', 'q1', 'q2', 'q3', 'az', 'ax', 'ay', 'dt']
+    new_order = ['time', 'q0', 'q1', 'q2', 'q3', 'ax', 'ay', 'az', 'dt']
     df_u = df_u[new_order]
     # print(df_u)
     return df_u
 
 df = match_quat_accel()
 # print(df)
+
+
+
+
 ''''''
 # # print(len(df))
 # for i in range(len(df)):
@@ -143,22 +147,62 @@ def ins_step(p, v, q, a_body, dt):
 
     return p_new, v_new
 
+
+'''N = 10
+dt = 0.1
+
+df = pd.DataFrame({
+    "time": np.arange(N) * dt,
+    "dt": [dt]*N,
+    "q0": [1]*N,
+    "q1": [0]*N,
+    "q2": [0]*N,
+    "q3": [0]*N,
+    "ax": [0]*N,
+    "ay": [0]*N,
+    "az": [0]*N,
+})'''
+
+
+# a = 1.0  # m/s^2
+# dt = 0.1
+# N = 10
+
+'''df = pd.DataFrame({
+    "time": np.arange(N) * dt,
+    "dt": [dt]*N,
+    "q0": [1]*N,
+    "q1": [0]*N,
+    "q2": [0]*N,
+    "q3": [0]*N,
+    "ax": [a]*N,
+    "ay": [0]*N,
+    "az": [0]*N,
+})'''
+
+
+'''from math import sqrt
+
+q0 = sqrt(2)/2
+qz = sqrt(2)/2
+
+df = pd.DataFrame({
+    "time": np.arange(N) * dt,
+    "dt": [dt]*N,
+    "q0": [q0]*N,
+    "q1": [0]*N,
+    "q2": [0]*N,
+    "q3": [qz]*N,
+    "ax": [1]*N,   # acelera en X-body
+    "ay": [0]*N,
+    "az": [0]*N,
+})'''
+
+
 p = np.zeros(3)
 v = np.zeros(3)
 
-# for k in range(1, N):
-#     dt = t[k] - t[k-1]
-
-#     q = quat[k]       # [q0, qx, qy, qz]
-#     a_body = accel[k] # [ax, ay, az]
-
-#     p, v = ins_step(p, v, q, a_body, dt)
-
-#     print(f"t={t[k]:.3f}  p={p}  v={v}")
-
-# print(len(df))
-
-for k in range(len(df)):
+for k in range(1, len(df)):
 
     # dt = t[k] - t[k-1]
     time = df.loc[k, "time"]
@@ -169,6 +213,6 @@ for k in range(len(df)):
     p, v = ins_step(p, v, quat, a_body, dt)
 
     # print(f"t={time[k]:.3f}  p={p}  v={v}")
-    print(f"t={time:.3f}  p={p}  v={v}")
+    print(f"t={time:.3f}  v={v}  p={p}")
 
     # print(dt, q, a_b, "\n")

@@ -19,7 +19,7 @@ def body_axes_from_quaternion(q):
 # import numpy as np
 
 # leer archivo
-data = np.loadtxt("SensorConnectData8.csv", delimiter=",", skiprows=1)
+data = np.loadtxt("quat3.csv", delimiter=",", skiprows=1)
 
 timestamps = data[:, 0]          # unix ns
 quaternions = data[:, 1:5]       # q0 qx qy qz
