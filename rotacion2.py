@@ -19,7 +19,7 @@ def body_axes_from_quaternion(q):
 # import numpy as np
 
 # leer archivo
-data = np.loadtxt("quat3.csv", delimiter=",", skiprows=1)
+data = np.loadtxt("quat4.csv", delimiter=",", skiprows=1)
 
 timestamps = data[:, 0]          # unix ns
 quaternions = data[:, 1:5]       # q0 qx qy qz
@@ -50,7 +50,7 @@ def update_plot(q, t):
     ax.set_ylabel('Y')
     ax.set_zlabel('Z')
 
-    ax.set_title(f"IMU Orientation | t = {t:.3f} s")
+    ax.set_title(f"Orientacion del IMU | t = {t:.3f} s")
 
     plt.draw()
     # plt.pause(0.01)

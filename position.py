@@ -77,7 +77,7 @@ def match_quat_accel():
     return df_u
 
 df = match_quat_accel()
-# print(df)
+print(df)
 
 
 
@@ -202,17 +202,17 @@ df = pd.DataFrame({
 p = np.zeros(3)
 v = np.zeros(3)
 
-for k in range(1, len(df)):
+# for k in range(1, len(df)):
 
-    # dt = t[k] - t[k-1]
-    time = df.loc[k, "time"]
-    dt = df.loc[k, "dt"]
-    quat  = df.loc[k, ["q0","q1","q2","q3"]].values
-    a_body = df.loc[k, ["ax","ay","az"]].values
+#     # dt = t[k] - t[k-1]
+#     time = df.loc[k, "time"]
+#     dt = df.loc[k, "dt"]
+#     quat  = df.loc[k, ["q0","q1","q2","q3"]].values
+#     a_body = df.loc[k, ["ax","ay","az"]].values
 
-    p, v = ins_step(p, v, quat, a_body, dt)
+#     p, v = ins_step(p, v, quat, a_body, dt)
 
-    # print(f"t={time[k]:.3f}  p={p}  v={v}")
-    print(f"t={time:.3f}  v={v}  p={p}")
+#     # print(f"t={time[k]:.3f}  p={p}  v={v}")
+#     print(f"t={time:.3f}  v={v}  p={p}")
 
-    # print(dt, q, a_b, "\n")
+#     # print(dt, q, a_b, "\n")
