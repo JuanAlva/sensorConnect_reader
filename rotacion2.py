@@ -19,7 +19,7 @@ def body_axes_from_quaternion(q):
 # import numpy as np
 
 # leer archivo
-data = np.loadtxt("quat4.csv", delimiter=",", skiprows=1)
+data = np.loadtxt("cuaterniones_3.csv", delimiter=",", skiprows=1)
 
 timestamps = data[:, 0]          # unix ns
 quaternions = data[:, 1:5]       # q0 qx qy qz
@@ -60,9 +60,16 @@ print(type(quaternions))
 # === Animación respetando tiempo real ===
 t0 = timestamps_sec[0]
 
-for i in range(len(quaternions)):
+freq = 10000000000
+
+dt = 1/freq
+print(dt)
+
+for i in range(1, len(quaternions)):
     update_plot(quaternions[i], timestamps_sec[i] - t0)
 
-    if i > 0:
-        dt = timestamps_sec[i] - timestamps_sec[i - 1]
-        plt.pause(dt)
+    # if i > 0:
+    #     # dt = timestamps_sec[i] - timestamps_sec[i - 1]
+    #     plt.pause(dt)
+
+    plt.pause(dt)
