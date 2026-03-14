@@ -1,0 +1,22 @@
+FILE_INFO
+ListSeparator=,
+DecimalSeparator=.
+
+SESSION_INFO
+TimeZone,UTC
+TimeZoneOffset,0
+DateTimeFormat,nnnnnnnnnnnnnnnnnnn
+StartTime,01/01/70 00:00:00.000000000
+TimeFormat,Unix
+
+DEVICE_INFO
+Address,*
+
+CHANNEL_INFO
+Channel,Type,SampleRate,Equation,Coefficients,Unit,UnitSymbol,WhereApplied,WhenApplied
+inertial-6286.188861:deltaVelX,Timeseries,,,,,,,
+inertial-6286.188861:deltaVelY,Timeseries,,,,,,,
+inertial-6286.188861:deltaVelZ,Timeseries,,,,,,,
+
+DATA_START
+Time,inertial-6286.188861:deltaVelX,inertial-6286.188861:deltaVelY,inertial-6286.188861:deltaVelZ

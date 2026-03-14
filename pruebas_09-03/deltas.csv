@@ -1,27 +1,3 @@
-FILE_INFO
-ListSeparator=,
-DecimalSeparator=.
-
-SESSION_INFO
-TimeZone,UTC
-TimeZoneOffset,0
-DateTimeFormat,MM/DD/YY h:mm:ss.nnnnnnnnn
-StartTime,03/12/26 20:13:44.584119808
-TimeFormat,Relative
-
-DEVICE_INFO
-Address,*
-
-CHANNEL_INFO
-Channel,Type,SampleRate,Equation,Coefficients,Unit,UnitSymbol,WhereApplied,WhenApplied
-inertial-6286.188861:deltaThetaX,Timeseries,100Hz,,,,,,
-inertial-6286.188861:deltaThetaY,Timeseries,100Hz,,,,,,
-inertial-6286.188861:deltaThetaZ,Timeseries,100Hz,,,,,,
-inertial-6286.188861:deltaVelX,Timeseries,100Hz,,,,,,
-inertial-6286.188861:deltaVelY,Timeseries,100Hz,,,,,,
-inertial-6286.188861:deltaVelZ,Timeseries,100Hz,,,,,,
-
-DATA_START
 Time,inertial-6286.188861:deltaThetaX,inertial-6286.188861:deltaThetaY,inertial-6286.188861:deltaThetaZ,inertial-6286.188861:deltaVelX,inertial-6286.188861:deltaVelY,inertial-6286.188861:deltaVelZ
 0.000000000,5.409021468949504e-06,-1.973708322111634e-06,2.159488531106035e-06,0.0009086693753488362,-5.381525988923386e-05,-0.009921475313603878
 0.010178816,4.032268861919874e-06,-6.879006377857877e-06,7.05480942997383e-06,0.0009135428699664772,-5.921914635109715e-05,-0.009919661097228527
